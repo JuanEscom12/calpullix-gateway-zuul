@@ -1,0 +1,190 @@
+spring:
+  application:
+    name: calpullix-gateway-zuul
+    
+server:
+  port: 8662
+
+    
+ribbon:
+  ReadTimeout: 2000000
+  
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 2000000
+            
+eureka:
+  client:
+    registryFetchIntervalSeconds: 10
+    serviceUrl: 
+      defaultZone: http://localhost:8761/eureka
+
+zuul:
+  host:
+    connect-timeout-millis: 50000000
+    socket-timeout-millis: 50000000
+  ignoredServices: '*'
+  routes:
+    statistics-service:
+      path: /calpullix/statistics/**
+      serviceId: calpullix-service-statistics
+      stripPrefix: false
+    login-service:
+      sensitiveHeaders: 
+      path: /calpullix/login/**
+      serviceId: calpullix-service-login
+      stripPrefix: false
+    branch-service:
+      sensitiveHeaders:
+      path: /calpullix/branch/**
+      serviceId: calpullix-service-branch
+      stripPrefix: false
+    best-branch-service:
+      sensitiveHeaders:
+      path: /calpullix/best/branch
+      serviceId: calpullix-service-branch
+      stripPrefix: false      
+    client-service:
+      sensitiveHeaders:
+      path: /calpullix/client/**
+      serviceId: calpullix-service-client-classification
+      stripPrefix: false     
+    retrieve-client-service:
+      sensitiveHeaders:
+      path: /calpullix/clients/retrieve
+      serviceId: calpullix-service-client-classification
+      stripPrefix: false
+    update-client-service:
+      sensitiveHeaders:
+      path: /calpullix/update/clients/classify
+      serviceId: calpullix-service-client-classification
+      stripPrefix: false
+    update-client-promotion-service:
+      sensitiveHeaders:
+      path: /calpullix/update/client/promotions
+      serviceId: calpullix-service-client-classification
+      stripPrefix: false
+    product-classification-service:
+      sensitiveHeaders:
+      path: /calpullix/products/classify
+      serviceId: calpullix-service-product-classification
+      stripPrefix: false
+    product-classification-update-service:
+      sensitiveHeaders:
+      path: /calpullix/update/products/classify
+      serviceId: calpullix-service-product-classification
+      stripPrefix: false
+    product-service:
+      sensitiveHeaders:
+      path: /calpullix/product/**
+      serviceId: calpullix-service-product-list
+      stripPrefix: false
+    product-name-service:
+      sensitiveHeaders:
+      path: /calpullix/product-name/retrieve
+      serviceId: calpullix-service-product-list
+      stripPrefix: false
+    promotions-service:
+      sensitiveHeaders:
+      path: /calpullix/promotions/**
+      serviceId: calpullix-service-promotions
+      stripPrefix: false
+    client-promotions-service:
+      sensitiveHeaders:
+      path: /calpullix/client/promotions
+      serviceId: calpullix-service-promotions
+      stripPrefix: false
+    product-promotions-service:
+      sensitiveHeaders:
+      path: /calpullix/analysis/products-clients/retrieve
+      serviceId: calpullix-service-promotions
+      stripPrefix: false
+    profile-promotions-service:
+      sensitiveHeaders:
+      path: /calpullix/promotions/profile/detail/retrieve 
+      serviceId: calpullix-service-promotions
+      stripPrefix: false
+    promotions-image-service:
+      sensitiveHeaders:
+      path: /calpullix/promotions/image/retrieve 
+      serviceId: calpullix-service-promotions
+      stripPrefix: false
+    detail-promotions-service:
+      sensitiveHeaders:
+      path: /calpullix/detail/promotion/retrieve
+      serviceId: calpullix-service-promotions
+      stripPrefix: false
+    profile-promotions-update-service:
+      sensitiveHeaders:
+      path: /calpullix/promotions/profile/update
+      serviceId: calpullix-service-promotions
+      stripPrefix: false
+    purchase-order-service:
+      sensitiveHeaders:
+      path: /calpullix/retrieve/purchaseorder/**
+      serviceId: calpullix-service-purchase-order
+      stripPrefix: false
+    purchase-order-update-service:
+      sensitiveHeaders:
+      path: /calpullix/update/purchaseorder
+      serviceId: calpullix-service-purchase-order
+      stripPrefix: false
+    purchase-order-status-service:
+      sensitiveHeaders:
+      path: /calpullix/purchaseorder/status/retrieve
+      serviceId: calpullix-service-purchase-order
+      stripPrefix: false
+    purchase-order-pdf-service:
+      sensitiveHeaders:
+      path: /calpullix/purchase-order/pdf/{idPurchaseOrder}
+      serviceId: calpullix-service-purchase-order
+      stripPrefix: false
+    regression-service:
+      sensitiveHeaders:
+      path: /calpullix/retrieve/regression
+      serviceId: calpullix-service-regression
+      stripPrefix: false
+    restart-password-service:
+      sensitiveHeaders:
+      path: /calpullix/restartpassword
+      serviceId: calpullix-service-restart-password
+      stripPrefix: false
+    change-password-service:
+      sensitiveHeaders:
+      path: /calpullix/change-password
+      serviceId: calpullix-service-restart-password
+      stripPrefix: false
+    sales-service:
+      sensitiveHeaders:
+      path: /calpullix/sales/retrieve
+      serviceId: calpullix-service-sales
+      stripPrefix: false
+    twitter-service:
+      sensitiveHeaders:
+      path: /calpullix/twitter/**
+      serviceId: calpullix-service-twitter
+      stripPrefix: false
+    users-service:
+      sensitiveHeaders:
+      path: /calpullix/register/user
+      serviceId: calpullix-service-users
+      stripPrefix: false
+    profile-user-service:
+      sensitiveHeaders:
+      path: /calpullix/profile/user/promotions/retrieve
+      serviceId: calpullix-service-users
+      stripPrefix: false
+    hello-service:
+      path: /calpullix/hello/**
+      serviceId: calpullix-service-login
+      stripPrefix: false
+   
+
+jwt:
+  secret-key: javainuse
+  
+  
